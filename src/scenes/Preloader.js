@@ -11,8 +11,9 @@ export default class Preloader extends Scene {
     this.preloadMap("yavin");
     // this.preloadMap("hoth2");
 
-    // this.preloadCharacter("hero");
+    this.preloadCharacter("hero");
     this.preloadCharacter("robot");
+    this.preloadCharacter("zombie");
   }
 
   preloadMap(name) {
@@ -35,8 +36,9 @@ export default class Preloader extends Scene {
   create() {
     console.debug("Preloader.create");
 
-    // this.createAnimations("hero");
+    this.createAnimations("hero");
     this.createAnimations("robot");
+    this.createAnimations("zombie");
 
     this.scene.start("Game");
   }

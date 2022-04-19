@@ -1,10 +1,14 @@
 import { Scene } from "phaser";
 
+import Player from "../entities/Player";
+import Enemy from "../entities/Enemy";
+
 export default class GameScene extends Scene {
   constructor(config) {
     super({ ...config, key: "Game" });
 
-    this.player = undefined;
+    this.player;
+    this.enemies = [];
   }
 
   preload() {}
@@ -17,12 +21,16 @@ export default class GameScene extends Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    this.createGround(currentMap);
+    this.createGround();
+
+    this.createEnemy("robot", 1000);
+    this.createEnemy("zombie", 1600, 50);
+
     this.createPlayer(currentCharacter);
     this.createCamera();
   }
 
-  createGround(name) {
+  createGround() {
     const groundTiles = this.map.addTilesetImage(`tiles`);
 
     this.groundLayer = this.map.createLayer("World", groundTiles, 0, 120);
@@ -33,10 +41,14 @@ export default class GameScene extends Scene {
   }
 
   createPlayer(name) {
-    console.log(name);
-    this.player = this.physics.add.sprite(400, 200, `character-${name}`);
-    this.player.setCollideWorldBounds(true);
+    this.player = new Player(this, 400, 200, name);
     this.physics.add.collider(this.groundLayer, this.player);
+  }
+
+  createEnemy(type, x, y = 200) {
+    const enemy = new Enemy(this, x, y, type);
+    this.physics.add.collider(this.groundLayer, enemy);
+    this.enemies.push(enemy);
   }
 
   createCamera() {
@@ -51,33 +63,6 @@ export default class GameScene extends Scene {
   }
 
   update() {
-    const run = this.cursors.shift.isDown;
-    const velocity = run ? 400 : 200;
-    const animation = run ? "run" : "walk";
-
-    if (this.cursors.left.isDown) {
-      this.player.body.setVelocityX(-velocity);
-      this.player.anims.play(animation, true);
-      this.player.flipX = true;
-    } else if (this.cursors.right.isDown) {
-      this.player.body.setVelocityX(velocity);
-      this.player.anims.play(animation, true);
-      this.player.flipX = false;
-    } else {
-      this.player.body.setVelocityX(0);
-      this.player.anims.play("idle", true);
-    }
-
-    if (this.cursors.space.isDown && this.player.body.onFloor()) {
-      this.player.body.setVelocityY(-400);
-    }
-
-    if (!this.player.body.onFloor()) {
-      if (this.player.body.velocity.y < 0) {
-        this.player.anims.play("jump", true);
-      } else {
-        this.player.anims.play("fall", true);
-      }
-    }
+    this.player.move(this.cursors);
   }
 }
