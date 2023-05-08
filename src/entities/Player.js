@@ -1,5 +1,8 @@
 import { Physics } from "phaser";
 
+const WALK_VELOCITY = 250;
+const JUMP_VELOCITY = 400;
+
 export default class Player extends Physics.Arcade.Sprite {
   constructor(scene, x, y, name) {
     super(scene, x, y, `character-${name}`);
@@ -12,7 +15,7 @@ export default class Player extends Physics.Arcade.Sprite {
 
   move(cursors) {
     const run = cursors.shift.isDown;
-    const velocity = run ? 400 : 200;
+    const velocity = run ? WALK_VELOCITY * 2 : WALK_VELOCITY;
     const animation = run ? "run" : "walk";
 
     // move left/right
@@ -31,7 +34,7 @@ export default class Player extends Physics.Arcade.Sprite {
 
     // jump
     if (cursors.space.isDown && this.body.onFloor()) {
-      this.body.setVelocityY(-400);
+      this.body.setVelocityY(-JUMP_VELOCITY);
     }
 
     // play jumping and falling animations

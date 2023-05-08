@@ -1,0 +1,56 @@
+{
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "castle/castle.json": {
+            "scale": 0.3521,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1033.797216699801,
+                "y": 898.8923601249644
+            }
+        },
+        "castle/castle.json#sheet": {
+            "scaleInDock": 1
+        },
+        "grass/map.json": {
+            "scale": 0.272,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1680.1470588235293,
+                "y": 417.27941176470586
+            }
+        },
+        "grass/map.json#tiles": {
+            "scaleInDock": 1
+        },
+        "snow/map.json": {
+            "scale": 0.23297619047619045,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2103.2192130812473,
+                "y": 354.1134389371489
+            }
+        },
+        "snow/map.json#tiles": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "/Users/bsoin/Projects/Games/Test5/public/assets/characters/robot",
+    "openFiles": [
+    ],
+    "project": "maps.tiled-project",
+    "recentFiles": [
+        "grass/map.json",
+        "snow/map.json",
+        "castle/castle.json"
+    ],
+    "tileset.tileSize": {
+        "height": 70,
+        "width": 70
+    }
+}

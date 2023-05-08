@@ -1,12 +1,15 @@
 import { Physics } from "phaser";
 
 export default class Enemy extends Physics.Arcade.Sprite {
-  constructor(scene, x, y, type) {
-    super(scene, x, y, `character-${type}`);
+  constructor(scene, type) {
+    console.log("-->>", type);
+    super(scene, 0, 0, `character-${type}`);
+
+    scene.physics.add.existing(this);
+    scene.physics.add.collider(scene.groundLayer, this);
 
     scene.add.existing(this);
-    scene.physics.add.existing(this);
 
-    this.setCollideWorldBounds(true);
+    // this.setCollideWorldBounds(true);
   }
 }
