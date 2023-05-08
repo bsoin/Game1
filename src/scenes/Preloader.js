@@ -8,8 +8,8 @@ export default class Preloader extends Scene {
   preload() {
     console.debug("Preloader.preload");
 
-    this.preloadMap("yavin");
-    // this.preloadMap("hoth2");
+    this.preloadMap("grass");
+    this.preloadMap("snow");
 
     this.preloadCharacter("hero");
     this.preloadCharacter("robot");

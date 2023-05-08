@@ -12,7 +12,7 @@ export default class Boot extends Scene {
   create() {
     console.debug("Boot.create");
 
-    this.registry.set("currentMap", "yavin");
+    this.registry.set("currentMap", "grass");
     this.registry.set("currentCharacter", "hero");
 
     this.scene.start("Preloader");
