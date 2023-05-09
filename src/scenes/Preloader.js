@@ -45,7 +45,7 @@ export default class Preloader extends Scene {
 
   createAnimations(name) {
     this.anims.create({
-      key: "walk",
+      key: `${name}-walk`,
       frames: this.anims.generateFrameNames(`character-${name}`, {
         prefix: "walk",
         start: 0,
@@ -57,7 +57,7 @@ export default class Preloader extends Scene {
     });
 
     this.anims.create({
-      key: "run",
+      key: `${name}-run`,
       frames: this.anims.generateFrameNames(`character-${name}`, {
         prefix: "run",
         start: 0,
@@ -69,19 +69,19 @@ export default class Preloader extends Scene {
     });
 
     this.anims.create({
-      key: "idle",
+      key: `${name}-idle`,
       frames: [{ key: `character-${name}`, frame: "idle" }],
       frameRate: 1,
     });
 
     this.anims.create({
-      key: "jump",
+      key: `${name}-jump`,
       frames: [{ key: `character-${name}`, frame: "jump" }],
       frameRate: 1,
     });
 
     this.anims.create({
-      key: "fall",
+      key: `${name}-fall`,
       frames: [{ key: `character-${name}`, frame: "fall" }],
       frameRate: 1,
     });

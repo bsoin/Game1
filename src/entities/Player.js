@@ -8,15 +8,20 @@ export default class Player extends Physics.Arcade.Sprite {
     super(scene, x, y, `character-${name}`);
 
     scene.add.existing(this);
-    scene.physics.add.existing(this);
 
-    this.setCollideWorldBounds(true);
+    scene.physics.add.existing(this);
+    scene.physics.add.collider(scene.groundLayer, this);
+
+    // this.setCollideWorldBounds(true);
+    this.debugShowVelocity = true;
   }
 
   move(cursors) {
+    this.setBodySize(70, 128);
+
     const run = cursors.shift.isDown;
     const velocity = run ? WALK_VELOCITY * 2 : WALK_VELOCITY;
-    const animation = run ? "run" : "walk";
+    const animation = run ? "hero-run" : "hero-walk";
 
     // move left/right
     if (cursors.left.isDown) {
@@ -29,7 +34,7 @@ export default class Player extends Physics.Arcade.Sprite {
       this.flipX = false;
     } else {
       this.body.setVelocityX(0);
-      this.anims.play("idle", true);
+      this.anims.play("hero-idle", true);
     }
 
     // jump
@@ -40,9 +45,9 @@ export default class Player extends Physics.Arcade.Sprite {
     // play jumping and falling animations
     if (!this.body.onFloor()) {
       if (this.body.velocity.y < 0) {
-        this.anims.play("jump", true);
+        this.anims.play("hero-jump", true);
       } else {
-        this.anims.play("fall", true);
+        this.anims.play("hero-fall", true);
       }
     }
   }

@@ -1,9 +1,28 @@
 {
-    "activeFile": "",
+    "activeFile": "grass/map.json",
     "expandedProjectPaths": [
+        "castle",
+        "grass",
+        "snow",
+        "."
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
+            "scaleInDock": 1
+        },
+        "/Users/bsoin/Downloads/level-with-coin-objects.json": {
+            "scale": 0.6115625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 801.2263668880939,
+                "y": 288.605007664793
+            }
+        },
+        "/Users/bsoin/Downloads/level-with-coin-objects.json#coin": {
+            "scaleInDock": 1
+        },
+        "/Users/bsoin/Downloads/level-with-coin-objects.json#ground_1x1": {
             "scaleInDock": 1
         },
         "castle/castle.json": {
@@ -18,11 +37,14 @@
             "scaleInDock": 1
         },
         "grass/map.json": {
-            "scale": 0.272,
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.7228,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1680.1470588235293,
-                "y": 417.27941176470586
+                "x": 648.8655229662425,
+                "y": 306.44714997232984
             }
         },
         "grass/map.json#tiles": {
@@ -42,10 +64,12 @@
     },
     "last.imagePath": "/Users/bsoin/Projects/Games/Test5/public/assets/characters/robot",
     "openFiles": [
+        "grass/map.json"
     ],
     "project": "maps.tiled-project",
     "recentFiles": [
         "grass/map.json",
+        "/Users/bsoin/Downloads/level-with-coin-objects.json",
         "snow/map.json",
         "castle/castle.json"
     ],

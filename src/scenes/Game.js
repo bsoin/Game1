@@ -25,9 +25,6 @@ export default class GameScene extends Scene {
     this.createGround();
     this.createEnemies();
 
-    // this.createEnemy("robot", 1000);
-    // this.createEnemy("zombie", 1600, 50);
-
     this.createPlayer(currentCharacter);
     this.createCamera();
   }
@@ -43,27 +40,23 @@ export default class GameScene extends Scene {
   }
 
   createEnemies() {
-    const robots = this.map.createFromObjects("Enemies", {
-      name: "robot",
-      classType: Robot,
-    });
-
-    const zombies = this.map.createFromObjects("Enemies", {
-      name: "zombie",
-      classType: Zombie,
-    });
+    this.enemies = [
+      ...this.map.createFromObjects("Enemies", {
+        name: "robot",
+        classType: Robot,
+        key: "character-robot",
+      }),
+      ...this.map.createFromObjects("Enemies", {
+        name: "zombie",
+        classType: Zombie,
+        key: "character-zombie",
+      }),
+    ];
   }
 
   createPlayer(name) {
     this.player = new Player(this, 400, 200, name);
-    this.physics.add.collider(this.groundLayer, this.player);
   }
-
-  // createEnemy(type, x, y = 200) {
-  //   const enemy = new Enemy(this, x, y, type);
-  //   this.physics.add.collider(this.groundLayer, enemy);
-  //   this.enemies.push(enemy);
-  // }
 
   createCamera() {
     this.cameras.main.setBounds(
@@ -76,7 +69,8 @@ export default class GameScene extends Scene {
     this.cameras.main.setBackgroundColor("#ccedff");
   }
 
-  update() {
+  update(time, delta) {
     this.player.move(this.cursors);
+    this.enemies.forEach((enemy) => enemy.update(time, delta));
   }
 }
